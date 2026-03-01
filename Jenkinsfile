@@ -59,7 +59,10 @@ pipeline{
         }
         success{
             script {
+
                 echo "no errors, Build Successful, creating artifect of ${params.branch_name}"
+                sh "mkdir -p artifacts
+                cp -r dist/* artifacts/ || true"
                 archiveArtifacts artifacts: 'dist/**', fingerprint: true
             }
         }
