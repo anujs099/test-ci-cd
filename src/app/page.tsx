@@ -6,6 +6,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1 className={styles.title}>CI CD Test</h1>
+        <h2>Changes</h2>
       </main>
     </div>
   );
