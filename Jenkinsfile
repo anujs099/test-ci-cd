@@ -40,8 +40,10 @@ pipeline{
         }
 
         stage("deploy"){
-            script{
-                echo "deployment pending"
+            steps:{
+                script{
+                    echo "deployment pending"
+                }
             }
         }
 
