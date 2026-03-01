@@ -3,6 +3,7 @@ pipeline{
     tools{
         nodejs 'node24.3.0'
     }  
+    options { skipDefaultCheckout() }
     parameters{
         gitParameter(name:"branch_name",type:"PT_BRANCH",defaultValue:"develop",description:"select the branch to build")
     } 
