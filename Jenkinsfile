@@ -57,14 +57,17 @@ pipeline{
         failure{
             echo "build failed"
         }
-        success{
-            script {
+       success {
 
-                echo "no errors, Build Successful, creating artifect of ${params.branch_name}"
-                sh "mkdir -p artifacts
-                cp -r dist/* artifacts/ || true"
-                archiveArtifacts artifacts: 'dist/**', fingerprint: true
-            }
+            echo "No errors, Build Successful. Archiving artifacts for branch: ${params.branch_name}"
+            
+
+            sh """
+                mkdir -p build_backup
+                cp -r dist/* build_backup/ || true
+            """
+        
+            archiveArtifacts artifacts: 'dist/**', fingerprint: true, allowEmptyArchive: false
         }
     }
 }
