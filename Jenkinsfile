@@ -69,10 +69,10 @@ pipeline{
 
             sh """
                 mkdir -p build_backup
-                cp -r dist/* build_backup/ || true
+                cp -r .next/* build_backup/ || true
             """
         
-            archiveArtifacts artifacts: 'dist/**', fingerprint: true, allowEmptyArchive: false
+            archiveArtifacts artifacts: '.next/**', fingerprint: true, allowEmptyArchive: false
         }
     }
 }
