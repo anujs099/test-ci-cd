@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        node 'node24.3.0'
+        nodejs 'node24.3.0'
     }  
     parameters{
         gitParameter(name:"branch_name",type:"PT_BRANCH",defaultValue:"develop",description:"select the branch to build")
@@ -40,7 +40,7 @@ pipeline{
         }
 
         stage("deploy"){
-            steps:{
+            steps{
                 script{
                     echo "deployment pending"
                 }
