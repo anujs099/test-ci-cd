@@ -16,9 +16,13 @@ pipeline{
     stages{
         stage("checkout"){
             steps{
-                git branch:"${params.branch_name}",
-                credentialsId:"70c3ba1e-fed0-4e14-9682-50049bb7faaa",
-                url:"git@github.com:anujs099/test-ci-cd.git"
+                script{
+                    def cleanBranch = params.branch_name.replace('origin/', '')
+                
+                    git branch:"${cleanBranch}",
+                    credentialsId:"70c3ba1e-fed0-4e14-9682-50049bb7faaa",
+                    url:"git@github.com:anujs099/test-ci-cd.git"
+                }
             }
         }
 
