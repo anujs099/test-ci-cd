@@ -57,12 +57,13 @@ pipeline{
     post {
         always {
             echo "done !"
-            cleanWs()
         }
+        
         failure{
             echo "build failed"
         }
-       success {
+        
+        success {
 
             echo "No errors, Build Successful. Archiving artifacts for branch: ${params.branch_name}"
             
@@ -74,5 +75,10 @@ pipeline{
         
             archiveArtifacts artifacts: '.next/**', fingerprint: true, allowEmptyArchive: false
         }
+
+        cleanup{
+            cleanWs()
+        }
+
     }
 }
